@@ -1,0 +1,80 @@
+package java112.analyzer;
+
+
+import java.io.*;
+import java.util.*;
+
+
+/**
+ * The TokenCountAnalyzer class will count the number of unique tokens
+ * NEED JAVA DOCS!!!!
+ *
+ * @author Tony Alvarz
+ *
+ */
+public class TokenCountAnalyzer implements Analyzer {
+
+    private Properties properties;
+    private Map<String, Integer> tokenCounts;
+
+
+    public Map getTokenCounts() {
+        return tokenCounts;
+    }
+
+
+    /**
+     * Empty Constructor
+     **/
+    public TokenCountAnalyzer() {
+        tokenCounts = new TreeMap<String, Integer>();
+    }
+
+
+    public TokenCountAnalyzer(Properties properties) {
+        this();
+        this.properties = properties;
+    }
+
+
+    private void outPutIndividualTokens(PrintWriter out) {
+        for (Map.Entry <String, Integer> entry : tokenCounts.entrySet()) {
+
+            out.println(entry.getKey() + "\t" + entry.getValue());
+        }
+    }
+
+
+    /* TEMPORARY NOTE --- output will look like /t tabs betwen word and count
+     * and  5
+     * the 10
+     * what 2
+     *
+     */
+    public void processToken(String token) {
+
+        if (!tokenCounts.containsKey(token)) {
+            tokenCounts.put(token, 1);
+        } else {
+            int count = tokenCounts.get(token);
+            tokenCounts.put(token, count + 1);
+        }
+    }
+
+
+    public void writeOutputFile(String inputFilePath) {
+        String outputFilePath = properties.getProperty("output.dir") + properties.getProperty("output.file.token.count");
+
+        /* need to populate */
+        System.out.println("BigWordAnalyzer.writeOutputFile method hit." + outputFilePath);    /*TEMPORARY TEST */
+        try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(outputFilePath)))) {
+
+            outPutIndividualTokens(out);
+            System.out.println("TokenCountAnalyzer.outPutIndividualTokens(out)hit");
+        } catch (IOException inputOutputException) {
+            inputOutputException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+}

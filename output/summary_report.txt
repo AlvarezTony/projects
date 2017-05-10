@@ -1,0 +1,6 @@
+Application: AnalyzerProject2
+Author: TonyAlvarez, M 5:30pm - 9:15pm
+email: Talvarez3137@gmail.com
+Input file: /home/student/bigFile.txt
+Analyzed on: Mon May 01 17:43:19 CDT 2017
+Total token count: 4468588

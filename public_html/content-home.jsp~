@@ -1,0 +1,15 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div id="main">
+
+<c:import url="jsp/menu.jsp"/>
+
+
+<div id="text">
+ JJJJJ parted out.. does it work?
+ <p> Container test</p>
+<p>Data from my bean: ${myCoolBean.httpProtocol}</p>
+ 
+</div>
+
+</div>

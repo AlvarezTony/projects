@@ -1,0 +1,30 @@
+package java112.labs1;
+
+/**
+ * @author Your Name Here
+ * class LabThree
+ */
+public class LabThree {
+    /**
+     * Constructor for LabThree
+     */
+    public LabThree() {
+        
+    }
+    
+    public static void main(String[] arguments) {
+    
+    }
+    public void run (String input) {
+        System.out.println("input: " + input);
+    }
+}
+
+/* 
+Testcase: runMethodWithOneStringParamExistsTest took 0 sec
+	Caused an ERROR
+java112.labs1.LabThree.run(java.lang.String)
+java.lang.NoSuchMethodException: java112.labs1.LabThree.run(java.lang.String)
+	at java.lang.Class.getMethod(Class.java:1786)
+	at java112.tests.LabThreeTest.runMethodWithOneStringParamExistsTest(LabThreeTest.java:64)
+	*/

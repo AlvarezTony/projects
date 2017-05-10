@@ -1,0 +1,2 @@
+What did all that? You ran a java program named ant and you told it to make all those directories. We’ll look at how it did it soon.
+Next is to download the following files into your projects/lib directory. Right-click on them, select Save Link As…, and save them into lib. 

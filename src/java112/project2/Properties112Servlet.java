@@ -1,0 +1,107 @@
+package java112.project2;
+
+
+import java.io.*;
+import java.util.*;
+
+import javax.servlet.*;
+import javax.servlet.annotation.*;
+import javax.servlet.http.*;
+
+
+/**
+ * Servlet -- This servlet will create a web page which will populate data
+ * from  a propties file into a table on the webpage.
+ * @author Tony Alvarez
+ **/
+@WebServlet(
+name = "Properties112Servlet",
+urlPatterns = {"/Properties", "/Properties112Servlet"}
+) public class Properties112Servlet extends HttpServlet {
+
+    private Properties properties;
+
+
+    /**
+     ** This method will initialize the properties file and will
+     ** apply it to the properties instance variable
+     * @exception ServletException  throws a servlet exception
+     **/
+    public void init() throws ServletException {
+
+        // Initialization code
+        loadProperties("/project2.properties");
+    }
+
+
+    /**
+     * Loads the properties values to the instance variable.  All exception
+     * handling for the properties file is managed here.
+     * @param propertiesFilePath the file path of the properties file to be loaded.
+     **/
+    public void loadProperties(String propertiesFilePath) {
+        properties = new Properties();
+        try {
+            properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Handles HTTP GET requests.
+     *
+     *@param  request                   the HttpServletRequest object
+     *@param  response                   the HttpServletResponse object
+     *@exception  ServletException  if there is a Servlet failure
+     *@exception  IOException       if there is an IO failure
+     */
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        response.setContentType("text/html");
+
+        // set the response type before sending data
+        PrintWriter out = response.getWriter();
+        out.print("<HTML>");
+        out.print("<HEAD><TITLE>Properties Servlet Page</TITLE>");
+        out.print("<link href=\"css/style.css\" rel=\"stylesheet\" type=\"text/css\"/></HEAD>");
+        out.print("<BODY>");
+        out.print("<H1>Properties Servlet Page</H1>");
+
+        // First row of table - 9 cells 3x3
+        out.print("<table style=\"border: 1px solid black;\"><tr><td>");
+        out.print(properties.getProperty("author"));
+        out.print("</td><td>");
+        out.print(properties.getProperty("author.email.address"));
+        out.print("</td><td>");
+        out.print(properties.getProperty("course.title"));
+        out.print("</td></tr>");
+
+        // Second row of table
+        out.print("<tr><td>");
+        out.print(properties.getProperty("course.meeting.days"));
+        out.print("</td><td>");
+        out.print(properties.getProperty("course.meeting.times"));
+        out.print("</td><td>");
+        out.print(properties.getProperty("instructor.name"));
+        out.print("</td></tr>");
+
+        // Third row of table
+        out.print("<tr><td>");
+        out.print(properties.getProperty("project.description"));
+        out.print("</td><td>");
+        out.print("</td><td>");
+        out.print("</td></tr></table>");
+        out.print("<h3><a href=\"/java112\">Back to home page</a></h3>");
+
+        // out.print(properties.getproperties("author");
+        // System.out.println("Is this logging?");
+        // log("Is this logging?");
+        out.print("</BODY>");
+        out.print("</HTML>");
+        out.close();
+    }
+}

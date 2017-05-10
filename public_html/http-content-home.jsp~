@@ -1,0 +1,30 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div id="main">
+
+<c:import url="jsp/menu.jsp"/>
+
+
+<div id="text">
+ 
+ <ul>
+  <li>remoteComputer: ${myCoolBean.remoteComputer}</li>
+  <li>remoteComputerAddress: ${myCoolBean.remoteComputerAddress}</li>
+  <li>httpMethod: ${myCoolBean.httpMethod}</li>
+  <li>requestUri: ${myCoolBean.requestUri}</li>
+  <li>requestUrl: ${myCoolBean.requestUrl}</li>
+  <li>httpProtocol: ${myCoolBean.httpProtocol}</li>
+  <li>serverName: ${myCoolBean.ph}</li>
+  <li>serverPortNumber: ${myCoolBean.ph}</li>
+  <li>currentLocaleOfServer: ${myCoolBean.ph}</li>
+  <li>queryString: ${myCoolBean.ph}</li>
+  <li>queryParameter: ${myCoolBean.ph}</li>
+  <li>User-Agent: ${myCoolBean.ph}</li>
+  <li>Test Line: ${myCoolBean.test}</li>
+ </ul>
+
+
+ 
+</div>
+
+</div>

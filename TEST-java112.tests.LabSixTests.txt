@@ -1,0 +1,14 @@
+Testsuite: java112.tests.LabSixTests
+Tests run: 0, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.031 sec
+
+Testcase: java112.tests.LabSixTests took 0 sec
+	Caused an ERROR
+testOutputFile.txt (No such file or directory)
+java.io.FileNotFoundException: testOutputFile.txt (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at java112.tests.LabSixTests.initialSetUp(LabSixTests.java:45)
+

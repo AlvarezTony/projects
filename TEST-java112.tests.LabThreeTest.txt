@@ -1,0 +1,40 @@
+Testsuite: java112.tests.LabThreeTest
+Tests run: 9, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.044 sec
+
+Testcase: runMethodSystemOutPrintlnWithInputTest took 0.003 sec
+	FAILED
+expected:<[input: test
+]> but was:<[]>
+junit.framework.AssertionFailedError: expected:<[input: test
+]> but was:<[]>
+	at java112.tests.LabThreeTest.runMethodSystemOutPrintlnWithInputTest(LabThreeTest.java:71)
+
+Testcase: runMethodWithOneStringParamExistsTest took 0 sec
+Testcase: classExists took 0 sec
+Testcase: runMethodVoidReturnTest took 0 sec
+Testcase: mainMethodVoidReturnTest took 0 sec
+Testcase: mainMethodSystemOutPrintlnTooManyArgumentsTest took 0 sec
+	FAILED
+expected:<[Please enter one argument on the command line
+]> but was:<[]>
+junit.framework.AssertionFailedError: expected:<[Please enter one argument on the command line
+]> but was:<[]>
+	at java112.tests.LabThreeTest.mainMethodSystemOutPrintlnTooManyArgumentsTest(LabThreeTest.java:91)
+
+Testcase: mainMethodOneArgumentInputCallRunMethodTest took 0 sec
+	FAILED
+expected:<[input: test
+]> but was:<[]>
+junit.framework.AssertionFailedError: expected:<[input: test
+]> but was:<[]>
+	at java112.tests.LabThreeTest.mainMethodOneArgumentInputCallRunMethodTest(LabThreeTest.java:84)
+
+Testcase: mainMethodExistsTest took 0 sec
+Testcase: mainMethodSystemOutPrintlnNoArgumentsInputTest took 0 sec
+	FAILED
+expected:<[Please enter one argument on the command line
+]> but was:<[]>
+junit.framework.AssertionFailedError: expected:<[Please enter one argument on the command line
+]> but was:<[]>
+	at java112.tests.LabThreeTest.mainMethodSystemOutPrintlnNoArgumentsInputTest(LabThreeTest.java:77)
+

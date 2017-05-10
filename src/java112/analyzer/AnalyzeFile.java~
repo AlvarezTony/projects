@@ -1,0 +1,183 @@
+package java112.analyzer;
+
+
+import java.io.*;
+import java.util.*;
+
+
+/**
+ * The AnalyzeFile class will handle the majority of the file processing.
+ * The AnalyzeFile class verify that an input file has been provided,
+ * then it will parse the content tokens. Once the file has been parsed into
+ * tokens the AnalyzeFile class will write all output files.
+ * @author Tony Alvarz
+ *
+ */
+public class AnalyzeFile {
+
+    private int VALID_NUMBER_OF_ARGUMENTS = 2;
+    private String inputFilePath;
+    private Properties properties;
+    private List<Analyzer> analyzers;
+
+
+    /**
+     * Empty Constructor for AnalyzeFile
+     */
+    public AnalyzeFile() {
+    }
+
+
+    /**
+     * Instantiates all analyzers and creates an array list to manage them.
+     **/
+    private void createAnalyzers() {
+
+        analyzers = new ArrayList<Analyzer>();
+
+        //analyzers.add(new SummaryReport(properties));
+        //analyzers.add(new UniqueTokenAnalyzer(properties));
+        //analyzers.add(new BigWordAnalyzer(properties));
+        //analyzers.add(new TokenCountAnalyzer(properties));
+        //analyzers.add(new TokenSizeAnalyzer(properties));
+        analyzers.add(new KeywordAnalyzer(properties));
+    }
+
+
+    /**
+     * Confirms that the correct number of arguments have been passed in and
+     * initiates the file processing.  This includes creating tokens, calling the
+     * fileChecker method and finally writing all ouput files
+     *
+     * @param arguments the command line arguments
+     */
+    public void runAnalysis(String[] arguments) {
+        int passedArgumentsCount = arguments.length;
+
+        if (passedArgumentsCount != VALID_NUMBER_OF_ARGUMENTS) {
+            System.out.println("Please provide the correct input.");
+            return;
+        }
+
+
+        // System.out.println("hit AnalyzeFile.argumentCheck");    /* TEMPORARY TEST */
+        inputFilePath = arguments[0];
+
+        loadProperties(arguments[1]);
+
+        // System.out.println("arguments passed into inputFilePath is: " + inputFilePath);    /* TEMPORARY TEST */
+        createAnalyzers();
+
+        fileChecker();
+
+        writeAllOutputFiles();
+    }
+
+
+    /**
+     * Checks to make sure we can read the passed in File for processing with
+     * exception handling.  If we are able to read the file we then initiate parsing
+     * the file into tokens.
+     *
+     */
+    private void fileChecker() {
+
+        // System.out.println("AnalyzeFile run method hit");
+        try (BufferedReader inputReader = new BufferedReader(new FileReader(inputFilePath))) {
+
+            // System.out.println("AnalyzeFile TRY hit.");    /* TEMPORARY TEST */
+            generateTokens(inputReader);
+            // System.out.println("inputReaderAnalyzeFile TRY hit.");    /* TEMPORARY TEST */
+        } catch (FileNotFoundException fileNotFound) {
+            fileNotFound.printStackTrace();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Parses the file content into single line strings.  Those single line strings
+     * are then passed into the tokenIterator method to be broken into tokens.
+     *
+     *@param input the BufferedReader object that contains the file content
+     *@throws IOException IOException
+     */
+    private void generateTokens(BufferedReader input) throws IOException {
+        String inputLine = null;
+
+        while (input.ready()) {
+            inputLine = input.readLine();
+
+            // System.out.println("AnalyzeFile.run While Loop hit." + inputLine);    /* TEMPORARY TEST */
+            tokenIterator(inputLine);
+        }
+    }
+
+
+    /**
+     *Parses the passed in line of strings into individual tokens.  Each token is
+     *broken out based on non-word characters.  Each token is then passed to be processed
+     *for reporting.
+     *
+     * @param inputLine a line of strings
+     */
+    private void tokenIterator(String inputLine) {
+
+        String[] tokenArray = inputLine.split("\\W");
+
+        for (String token : tokenArray) {
+
+            if (!token.isEmpty()) {
+
+                analyzerLoop(token);
+            }
+        }
+    }
+
+
+    /**
+     * Loops through the list of analyzeers and invokes the processToken method
+     * for each.
+     *
+     * @param token a single token being passed in for processing
+     **/
+    private void analyzerLoop(String token) {
+        for (Analyzer currentAnalyzer : analyzers) {
+            currentAnalyzer.processToken(token);
+        }
+    }
+
+
+    /**
+     * Initiates the file output creation for all files by looping through
+     * each analyzer.
+     *
+     */
+    private void writeAllOutputFiles() {
+        for (Analyzer currentAnalyzer : analyzers) {
+            currentAnalyzer.writeOutputFile(inputFilePath);
+        }
+    }
+
+
+    /**
+     * Loads the properties file into the properties instance variable.  Exception
+     * handling is managed here for the properties file.
+     *
+     * @param propertiesFilePath the file path for the properties file we are to
+     * open and pull data from.
+     **/
+    public void loadProperties(String propertiesFilePath) {
+        properties = new Properties();
+        try {
+            properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+}

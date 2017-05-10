@@ -1,0 +1,19 @@
+author=TonyAlvarez
+author.email.address=Talvarez3137@gmail.com
+
+course.title=Advanced Java
+course.meeting.days=Monday
+course.meeting.times=5:30 pm
+
+instructor.name=E Knapp
+project.description=This project has allowed us to learn about \
+understaninding and evaluating the need for JSP.  \
+using static vs. dynamic text along with dynamic code and good JSP design.\
+We also learned about JSP expresssions, scriptlets and declarations along with\
+predefined variables.  Working with Maps from the Collections class library and \
+servlets vs. JSP pages.
+
+driver=NeedToUpdate
+url=NeedDbUrlHere
+username=NeedMySqlUserName
+password=NeedMySqlPassword

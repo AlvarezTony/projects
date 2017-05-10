@@ -1,0 +1,46 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div id="main">
+
+<c:import url="jsp/menu.jsp"/>
+
+
+<div id="text">
+
+  <table style="border: 1px solid black;">
+    <tr>
+      <td>Author</td>
+      <td>${myProperties.author}</td>
+    </tr>
+    <tr>
+      <td>Author Email Address</td>
+      <td>${myProperties.authorEmailAddress}</td>
+    </tr>
+    <tr>
+      <td>Course Title</td>
+      <td>${myProperties.courseTitle}</td>
+    </tr>
+    <tr>
+      <td>Course Meeting Days</td>
+      <td>${myProperties.courseMeetingDays}</td>
+    </tr>
+    <tr>
+      <td>Course Meeting Times</td>
+      <td>${myProperties.courseMeetingTimes}</td>
+    </tr>
+    <tr>
+      <td>Instructor Name</td>
+      <td>${myProperties.instructorName}</td>
+    </tr>
+    <tr>
+      <td>Project Description</td>
+      <td>${myProperties.projectDescription}</td>
+    </tr>
+    </table>
+ 
+ 
+ 
+ 
+</div>
+
+</div>

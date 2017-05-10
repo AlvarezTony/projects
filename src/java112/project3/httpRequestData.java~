@@ -1,0 +1,153 @@
+package java112.project3;
+
+import java.lang.*;
+
+/**
+ * @author Tony Alvarez
+ * class httpRequestData
+ */
+public class HttpRequestData {
+
+    private String remoteComputer; //getRemoteHost()  or getRemoteUser()- testing
+    private String remoteComputerAddress; //getRemoteAddr() - done
+    private String httpMethod;//getMethod() -- testing
+    private String requestUri;//getRequestURI()
+    private String requestUrl;//getRequestURL()
+    private String httpProtocol; //getProtocol()-done
+    private String serverName; //getServerName()
+    private String serverPortNumber; //getServerPort()
+    private String currentLocaleOfServer; //getLocale()
+    private String queryString; // getQueryString()
+    private String queryParameter; //getParamter()
+    private String userAgent; // Need to make parameter User-Agent
+    private String ph;
+    private String test;
+
+    
+    /**
+     * Constructor for httpRequestData
+     */
+    public void httpRequestData() {
+    }
+    
+    public String getRemoteComputer() {
+        return remoteComputer;
+    }
+
+
+    /********************************************************************
+     * TEMPORARY PLACEHOLDER  & TEST
+     * 
+     ********************************************************************/
+    public void setPh(String ph) {
+        this.ph = ph;
+    }
+   
+    public String getPh() {
+        return ph;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+   
+    public String getTest() {
+        return test;
+    }
+    
+
+    /**
+     * Sets the value of remoteComputer.
+     * @param remoteComputer The value to assign remoteComputer.
+     */
+    public void setRemoteComputer(String remoteComputer) {
+        this.remoteComputer = remoteComputer;
+    }
+
+
+    /**
+     * Returns the value of remoteComputerAddress.
+     */
+    public String getRemoteComputerAddress() {
+        return remoteComputerAddress;
+    }
+
+
+    /**
+     * Sets the value of remoteComputerAddress.
+     * @param remoteComputerAddress The value to assign remoteComputerAddress.
+     */
+    public void setRemoteComputerAddress(String remoteComputerAddress) {
+        this.remoteComputerAddress = remoteComputerAddress;
+    }
+
+
+    /**
+     * Returns the value of httpMethod.
+     */
+    public String getHttpMethod() {
+        return httpMethod;
+    }
+
+
+    /**
+     * Sets the value of httpMethod.
+     * @param httpMethod The value to assign httpMethod.
+     */
+    public void setHttpMethod(String httpMethod) {
+        this.httpMethod = httpMethod;
+    }
+
+
+    /**
+     * Returns the value of requestUrl.
+     */
+    public String getRequestUrl() {
+        return requestUrl;
+    }
+
+
+    /**
+     * Sets the value of requestUrl.
+     * @param requestUrl The value to assign requestUrl.
+     */
+    public void setRequestUrl(StringBuffer requestUrl) {
+        
+        this.requestUrl = requestUrl.toString();
+    }
+
+
+    /**
+     * Returns the value of RequestUri.
+     */
+    public String getRequestUri() {
+        return requestUri;
+    }
+
+
+    /**
+     * Sets the value of requestUri.
+     * @param requestUri The value to assign requestUri.
+     */
+    public void setRequestUri(String requestUri) {
+        this.requestUri = requestUri;
+    }
+
+
+    /**
+     * Returns the value of httpProtocol.
+     */
+    public String getHttpProtocol() {
+        return httpProtocol;
+    }
+
+
+    /**
+     * Sets the value of httpProtocol.
+     * @param httpProtocol The value to assign httpProtocol.
+     */
+    public void setHttpProtocol(String httpProtocol) {
+        this.httpProtocol = httpProtocol;
+    }
+
+}

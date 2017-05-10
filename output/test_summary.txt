@@ -1,0 +1,6 @@
+Application: null
+Author: Eric Knapp, null
+email: null
+Input file: inputFile
+Analyzed on: Mon Apr 24 23:34:50 CDT 2017
+Total token count: 10
